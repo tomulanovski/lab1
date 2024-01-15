@@ -16,8 +16,8 @@ char xprt(char c) {
     return c;
 }
 char my_get(char c){
-    char input =  (char) fgetc(stdin);
-    return input;
+    return (char) fgetc(stdin);
+
 }
 char cprt(char c){
     if (c >= 0x20 && c <= 0x7E) {
@@ -47,13 +47,14 @@ struct fun_desc {
 
 void MenuLoop(){
     char* carray = (char*)(malloc(5*sizeof(char)));
+    carray[0] = '\0';
     char input[10];
     struct fun_desc menu[] = {
-            {"Get string", &my_get},
-            {"Print string", &cprt},
-            {"Print Hex", &xprt},
-            {"Encrypt", &encrypt},
-            {"Decrypt", &decrypt},
+            {"Get string", my_get},
+            {"Print string", cprt},
+            {"Print Hex", xprt},
+            {"Encrypt", encrypt},
+            {"Decrypt", decrypt},
             {NULL,NULL}
     };
     int bound = sizeof(menu) / (sizeof(menu[0]))-1;
